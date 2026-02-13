@@ -10,6 +10,7 @@ import {
   Check,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import fridgeScanImage from '@/assets/fridge-scan.jpg';
 
 /* ------------------------------------------------------------------ */
 /*  Step definitions                                                   */
@@ -95,7 +96,7 @@ function ScanScreen() {
       <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl overflow-hidden">
         {/* Real fridge image */}
         <img
-          src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&h=530&fit=crop&auto=format"
+          src={fridgeScanImage}
           alt="Fridge with ingredients"
           className="absolute inset-0 w-full h-full object-cover"
         />
