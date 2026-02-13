@@ -90,28 +90,48 @@ const STEP_DURATION = 3500;
 /*  Individual step screens                                            */
 /* ------------------------------------------------------------------ */
 
+const scanItems = [
+  { name: 'Eggs', img: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=120&h=120&fit=crop' },
+  { name: 'Milk', img: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=120&h=120&fit=crop' },
+  { name: 'Cheese', img: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=120&h=120&fit=crop' },
+  { name: 'Tomatoes', img: 'https://images.unsplash.com/photo-1546470427-0d4db154ceb8?w=120&h=120&fit=crop' },
+  { name: 'Carrots', img: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=120&h=120&fit=crop' },
+  { name: 'Butter', img: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=120&h=120&fit=crop' },
+];
+
 function ScanScreen() {
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-3 px-3">
-      <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl overflow-hidden">
-        {/* Real fridge image */}
-        <img
-          src={fridgeScanImage}
-          alt="Fridge with ingredients"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Dark overlay for scanning effect */}
-        <div className="absolute inset-0 bg-black/20" />
+    <div className="flex flex-col items-center justify-center h-full gap-3 px-3 py-2">
+      <p className="text-[10px] font-bold text-blue-500">📸 Scanning items...</p>
+      <div className="relative w-full">
+        <div className="grid grid-cols-3 gap-1.5">
+          {scanItems.map((item, i) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.2 }}
+              className="relative rounded-lg overflow-hidden aspect-square"
+            >
+              <img
+                src={item.img}
+                alt={item.name}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/10" />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/50 px-1 py-0.5">
+                <span className="text-[7px] font-bold text-white">{item.name}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
         {/* Scanning line */}
         <motion.div
           className="absolute left-0 right-0 h-0.5 bg-blue-400 shadow-[0_0_10px_rgba(59,130,246,0.9)]"
-          animate={{ top: ['8%', '92%', '8%'] }}
+          animate={{ top: ['5%', '95%', '5%'] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
-      <p className="text-xs text-muted-foreground text-center font-medium">
-        Scanning your fridge...
-      </p>
     </div>
   );
 }
