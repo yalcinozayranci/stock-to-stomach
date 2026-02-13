@@ -1,37 +1,37 @@
 import { motion } from 'framer-motion';
-import { Camera, ScanLine, Package, AlertTriangle, ChefHat, Sparkles } from 'lucide-react';
+import { Camera, ScanLine, Package, ShieldCheck, UserCircle, BookImage } from 'lucide-react';
 import { HowItWorksVideo } from './HowItWorksVideo';
 
 const steps = [
   {
     icon: Camera,
-    title: 'Scan Your Fridge',
-    desc: 'Snap a photo of your fridge with your phone. Our AI camera detects every ingredient automatically.',
+    title: 'Snap a Photo',
+    desc: 'Take a photo of your fridge or the ingredients you want to cook with.',
   },
   {
     icon: ScanLine,
-    title: 'AI Analyzes Everything',
-    desc: 'Our AI instantly recognizes all your ingredients and categorizes them for you.',
+    title: 'AI Detects & Stocks',
+    desc: 'AI instantly recognizes every ingredient and updates your personal stock inventory.',
+  },
+  {
+    icon: UserCircle,
+    title: 'Your Personal Profile',
+    desc: 'We remember what you cooked, what you loved, and your dietary preferences.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Allergy-Safe Recipes',
+    desc: 'Your allergies are always checked — every recipe suggestion is safe for you.',
   },
   {
     icon: Package,
-    title: 'See Your Stock',
-    desc: 'View your full pantry organized by category—dairy, vegetables, protein, and more.',
+    title: 'Personalized Suggestions',
+    desc: 'Get recipes tailored to your taste, your stock, and your cooking history.',
   },
   {
-    icon: AlertTriangle,
-    title: 'Set Allergies',
-    desc: 'Tell us about any food allergies or dietary restrictions to keep your meals safe.',
-  },
-  {
-    icon: ChefHat,
-    title: 'Choose Your Style',
-    desc: 'Pick the cuisine or meal type you\'re craving—Italian, Asian, quick meals, and more.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Get Your Recipe',
-    desc: 'Receive a personalized recipe with step-by-step instructions, tailored just for you.',
+    icon: BookImage,
+    title: 'Cook with Visual Guide',
+    desc: 'Follow step-by-step instructions with photos and written guidance for every dish.',
   },
 ];
 
@@ -45,7 +45,7 @@ export function HowItWorksSection() {
             How It Works
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Delicious meals from your fridge—personalized just for you.
+            From photo to plate — your AI kitchen assistant handles everything.
           </p>
         </div>
 

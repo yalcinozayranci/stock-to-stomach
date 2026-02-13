@@ -36,19 +36,18 @@ export function HeroSection({ onGetStarted, onSignIn }: HeroSectionProps) {
             className="inline-flex items-center gap-2 bg-background/90 backdrop-blur-sm text-foreground px-4 py-2 rounded-full mb-6 shadow-sm border border-border/50"
           >
             <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">AI Powered Recipe Discovery</span>
+            <span className="text-sm font-medium">Your Personal AI Chef</span>
           </motion.div>
 
           {/* Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Cook Delicious Meals and{' '}
-            <span className="text-gradient-warm">What You Have</span>
+            Snap Your Fridge,{' '}
+            <span className="text-gradient-warm">Get Personalized Recipes</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-xl mx-auto leading-relaxed">
-            Snap a photo of your ingredients, and let AI suggest mouthwatering
-            recipes. Reduce food waste and discover new dishes every day.
+            Take a photo of your ingredients. AI creates recipes tailored to your taste, tracks your stock, respects your allergies, and guides you step by step with photos.
           </p>
 
           {/* CTAs */}

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { AlertTriangle, ChefHat } from 'lucide-react';
+import { ShieldCheck, ChefHat, Heart } from 'lucide-react';
 
 interface PreferencesSectionProps {
   onGetStarted: () => void;
@@ -24,26 +24,32 @@ export function PreferencesSection({ onGetStarted }: PreferencesSectionProps) {
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               className="w-12 h-12 bg-primary/15 rounded-xl flex items-center justify-center"
             >
-              <AlertTriangle className="w-6 h-6 text-primary" />
+              <ShieldCheck className="w-6 h-6 text-primary" />
             </motion.div>
             <motion.div
               animate={{ y: [2, -2, 2] }}
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center"
             >
-              <ChefHat className="w-6 h-6 text-accent-foreground" />
+              <Heart className="w-6 h-6 text-accent-foreground" />
+            </motion.div>
+            <motion.div
+              animate={{ y: [-2, 2, -2] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", delay: 0.5 }}
+              className="w-12 h-12 bg-primary/15 rounded-xl flex items-center justify-center"
+            >
+              <ChefHat className="w-6 h-6 text-primary" />
             </motion.div>
           </div>
 
           {/* Title */}
           <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Your Preferences, Our Priority
+            Built Around You
           </h3>
 
           {/* Description */}
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8 text-lg leading-relaxed">
-            Set your dietary preferences and allergies once, and every recipe we suggest will be safe for you. 
-            Whether you're vegan, gluten-free, or have nut allergies – we've got you covered.
+            Your allergies, your taste, your history — all in one profile. Every recipe is safe, personal, and made from what you already have. No waste, just great food.
           </p>
 
           {/* CTA */}
