@@ -11,6 +11,9 @@ import { AIPantryScanCard } from '@/components/home/AIPantryScanCard';
 import { SafestEatsSection } from '@/components/home/SafestEatsSection';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { HowItWorksSection } from '@/components/landing/HowItWorksSection';
+import { FeaturesShowcase } from '@/components/landing/FeaturesShowcase';
+import { VisualJourneySection } from '@/components/landing/VisualJourneySection';
+import { ValuePropsSection } from '@/components/landing/ValuePropsSection';
 import { PreferencesSection } from '@/components/landing/PreferencesSection';
 import { EmailConfirmationPage } from '@/components/auth/EmailConfirmationPage';
 
@@ -78,11 +81,14 @@ const Index = () => {
   // Landing page for non-logged-in users
   return (
     <Layout>
-      <HeroSection 
-        onGetStarted={() => setAuthModalOpen(true)} 
-        onSignIn={() => setAuthModalOpen(true)} 
+      <HeroSection
+        onGetStarted={() => setAuthModalOpen(true)}
+        onSignIn={() => setAuthModalOpen(true)}
       />
+      <FeaturesShowcase />
+      <VisualJourneySection />
       <HowItWorksSection />
+      <ValuePropsSection />
       <PreferencesSection onGetStarted={() => setAuthModalOpen(true)} />
       <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} />
     </Layout>
