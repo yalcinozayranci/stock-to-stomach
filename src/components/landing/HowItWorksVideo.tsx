@@ -457,10 +457,10 @@ export function HowItWorksVideo() {
                   className={cn(
                     'relative z-10 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 border-2 transition-all duration-300',
                     isActive
-                      ? cn('border-transparent shadow-lg', step.iconBg, step.activeGlow)
+                      ? cn('border-transparent shadow-lg bg-background', step.iconBg, step.activeGlow)
                       : isPast
-                        ? 'border-primary/30 bg-primary/5'
-                        : 'border-border bg-card'
+                        ? 'border-primary/30 bg-background'
+                        : 'border-border bg-background'
                   )}
                   animate={isActive ? { scale: [1, 1.08, 1] } : { scale: 1 }}
                   transition={isActive ? { duration: 2, repeat: Infinity, ease: 'easeInOut' } : { duration: 0.3 }}
