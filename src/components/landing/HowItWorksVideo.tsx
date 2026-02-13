@@ -92,7 +92,7 @@ const STEP_DURATION = 3500;
 function ScanScreen() {
   return (
     <div className="flex flex-col items-center justify-center h-full gap-4 px-4">
-      <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl border-2 border-blue-400/50 overflow-hidden bg-gradient-to-b from-slate-800 to-slate-900">
+      <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl overflow-hidden bg-gradient-to-b from-slate-800 to-slate-900">
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-4xl">
           <span>🧊</span>
           <div className="flex gap-1 text-2xl">
@@ -110,10 +110,6 @@ function ScanScreen() {
           animate={{ top: ['10%', '90%', '10%'] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-blue-400 rounded-tl" />
-        <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-blue-400 rounded-tr" />
-        <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-blue-400 rounded-bl" />
-        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-blue-400 rounded-br" />
       </div>
       <p className="text-xs text-muted-foreground text-center font-medium">
         Snap a photo of your fridge
