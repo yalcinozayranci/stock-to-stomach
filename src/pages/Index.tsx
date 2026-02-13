@@ -10,10 +10,8 @@ import { MasterChefCard } from '@/components/home/MasterChefCard';
 import { AIPantryScanCard } from '@/components/home/AIPantryScanCard';
 import { SafestEatsSection } from '@/components/home/SafestEatsSection';
 import { HeroSection } from '@/components/landing/HeroSection';
+import { BenefitsBar } from '@/components/landing/BenefitsBar';
 import { HowItWorksSection } from '@/components/landing/HowItWorksSection';
-import { FeaturesShowcase } from '@/components/landing/FeaturesShowcase';
-import { VisualJourneySection } from '@/components/landing/VisualJourneySection';
-import { ValuePropsSection } from '@/components/landing/ValuePropsSection';
 import { PreferencesSection } from '@/components/landing/PreferencesSection';
 import { EmailConfirmationPage } from '@/components/auth/EmailConfirmationPage';
 
@@ -85,10 +83,8 @@ const Index = () => {
         onGetStarted={() => setAuthModalOpen(true)}
         onSignIn={() => setAuthModalOpen(true)}
       />
-      <FeaturesShowcase />
-      <VisualJourneySection />
+      <BenefitsBar />
       <HowItWorksSection />
-      <ValuePropsSection />
       <PreferencesSection onGetStarted={() => setAuthModalOpen(true)} />
       <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} />
     </Layout>
