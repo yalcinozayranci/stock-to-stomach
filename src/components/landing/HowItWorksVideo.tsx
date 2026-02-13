@@ -10,7 +10,12 @@ import {
   Check,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import fridgeScanImage from '@/assets/fridge-scan.jpg';
+import imgEggs from '@/assets/ingredients/eggs.jpg';
+import imgMilk from '@/assets/ingredients/milk.jpg';
+import imgCheese from '@/assets/ingredients/cheese.jpg';
+import imgTomatoes from '@/assets/ingredients/tomatoes.jpg';
+import imgCarrots from '@/assets/ingredients/carrots.jpg';
+import imgButter from '@/assets/ingredients/butter.jpg';
 
 /* ------------------------------------------------------------------ */
 /*  Step definitions                                                   */
@@ -91,12 +96,12 @@ const STEP_DURATION = 3500;
 /* ------------------------------------------------------------------ */
 
 const scanItems = [
-  { name: 'Eggs', img: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=120&h=120&fit=crop' },
-  { name: 'Milk', img: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=120&h=120&fit=crop' },
-  { name: 'Cheese', img: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=120&h=120&fit=crop' },
-  { name: 'Tomatoes', img: 'https://images.unsplash.com/photo-1546470427-0d4db154ceb8?w=120&h=120&fit=crop' },
-  { name: 'Carrots', img: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=120&h=120&fit=crop' },
-  { name: 'Butter', img: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=120&h=120&fit=crop' },
+  { name: 'Eggs', img: imgEggs },
+  { name: 'Milk', img: imgMilk },
+  { name: 'Cheese', img: imgCheese },
+  { name: 'Tomatoes', img: imgTomatoes },
+  { name: 'Carrots', img: imgCarrots },
+  { name: 'Butter', img: imgButter },
 ];
 
 function ScanScreen() {
