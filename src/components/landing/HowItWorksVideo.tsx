@@ -91,28 +91,25 @@ const STEP_DURATION = 3500;
 
 function ScanScreen() {
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-4 px-4">
-      <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl overflow-hidden bg-gradient-to-b from-slate-800 to-slate-900">
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-4xl">
-          <span>🧊</span>
-          <div className="flex gap-1 text-2xl">
-            <span>🥚</span><span>🥛</span><span>🧀</span>
-          </div>
-          <div className="flex gap-1 text-2xl">
-            <span>🥕</span><span>🍅</span><span>🌶️</span>
-          </div>
-          <div className="flex gap-1 text-2xl">
-            <span>🍋</span><span>🧈</span><span>🥬</span>
-          </div>
-        </div>
+    <div className="flex flex-col items-center justify-center h-full gap-3 px-3">
+      <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-xl overflow-hidden">
+        {/* Real fridge image */}
+        <img
+          src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&h=530&fit=crop&auto=format"
+          alt="Fridge with ingredients"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Dark overlay for scanning effect */}
+        <div className="absolute inset-0 bg-black/20" />
+        {/* Scanning line */}
         <motion.div
-          className="absolute left-0 right-0 h-0.5 bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.8)]"
-          animate={{ top: ['10%', '90%', '10%'] }}
+          className="absolute left-0 right-0 h-0.5 bg-blue-400 shadow-[0_0_10px_rgba(59,130,246,0.9)]"
+          animate={{ top: ['8%', '92%', '8%'] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
       <p className="text-xs text-muted-foreground text-center font-medium">
-        Snap a photo of your fridge
+        Scanning your fridge...
       </p>
     </div>
   );
@@ -452,15 +449,16 @@ export function HowItWorksVideo() {
                 }}
                 className="relative flex items-start gap-4 group text-left md:py-[10px]"
               >
-                {/* Circle icon */}
+                {/* Circle icon — solid bg so connector line stays behind */}
+                <div className="relative z-10 w-10 h-10 rounded-full bg-background flex-shrink-0">
                 <motion.div
                   className={cn(
-                    'relative z-10 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 border-2 transition-all duration-300',
+                    'w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300',
                     isActive
-                      ? cn('border-transparent shadow-lg bg-background', step.iconBg, step.activeGlow)
+                      ? cn('border-transparent shadow-lg', step.iconBg, step.activeGlow)
                       : isPast
-                        ? 'border-primary/30 bg-background'
-                        : 'border-border bg-background'
+                        ? 'border-primary/30 bg-primary/5'
+                        : 'border-border bg-card'
                   )}
                   animate={isActive ? { scale: [1, 1.08, 1] } : { scale: 1 }}
                   transition={isActive ? { duration: 2, repeat: Infinity, ease: 'easeInOut' } : { duration: 0.3 }}
@@ -482,6 +480,7 @@ export function HowItWorksVideo() {
                     />
                   )}
                 </motion.div>
+                </div>
 
                 {/* Text content (desktop) */}
                 <div className="hidden md:flex flex-col min-w-0 pt-0.5">
