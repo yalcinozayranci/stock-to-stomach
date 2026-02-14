@@ -9,8 +9,13 @@ const corsHeaders = {
 
 // Product IDs for tier mapping
 const PRODUCT_TIERS: Record<string, string> = {
-  "prod_TserSUSSlyw3HH": "standard", // Standard Plan - £5 one-time
-  "prod_Tset4D3KZ1stik": "premium",  // Premium Plan - £12/month
+  "prod_TyhVGhp2kKrMz5": "premium", // CookFromHere product
+};
+
+// Price ID to tier mapping (both prices under same product)
+const PRICE_TIERS: Record<string, string> = {
+  "price_1T0k6HEWNXgtBSc6uT65SM6v": "standard", // £5/month
+  "price_1T0k8fEWNXgtBSc6A9lgAaDz": "premium",   // £12/month
 };
 
 // Meal credits per tier (-1 = unlimited)
@@ -133,40 +138,19 @@ serve(async (req) => {
     let expiresAt: string | null = null;
 
     if (subscriptions.data.length > 0) {
-      const subscription = subscriptions.data[0];
-      const productId = subscription.items.data[0].price.product as string;
-      tier = PRODUCT_TIERS[productId] || 'free';
-      status = subscription.status;
-      expiresAt = new Date(subscription.current_period_end * 1000).toISOString();
-      logStep("Active subscription found", { tier, status, expiresAt });
-    } else {
-      // Check for completed one-time payments (Standard)
-      const sessions = await stripe.checkout.sessions.list({
-        customer: customerId,
-        limit: 10,
-      });
+      // Check all active subscriptions and pick the highest tier
+      for (const subscription of subscriptions.data) {
+        const priceId = subscription.items.data[0].price.id;
+        const mappedTier = PRICE_TIERS[priceId] || PRODUCT_TIERS[subscription.items.data[0].price.product as string] || 'free';
 
-      for (const session of sessions.data) {
-        if (session.payment_status === 'paid' && session.mode === 'payment') {
-          // Get the line items to find the product
-          const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 1 });
-          if (lineItems.data.length > 0) {
-            const priceId = lineItems.data[0].price?.id;
-            if (priceId) {
-              const price = await stripe.prices.retrieve(priceId);
-              const productId = price.product as string;
-              const mappedTier = PRODUCT_TIERS[productId];
-              if (mappedTier === 'standard') {
-                tier = 'standard';
-                status = 'active';
-                expiresAt = null; // Never expires for one-time purchase
-                logStep("Standard plan found (one-time purchase)", { tier, productId });
-                break;
-              }
-            }
-          }
+        // Premium overrides standard
+        if (mappedTier === 'premium' || (mappedTier === 'standard' && tier === 'free')) {
+          tier = mappedTier;
+          status = subscription.status;
+          expiresAt = new Date(subscription.current_period_end * 1000).toISOString();
         }
       }
+      logStep("Active subscription found", { tier, status, expiresAt });
     }
 
     // Update profile with subscription info

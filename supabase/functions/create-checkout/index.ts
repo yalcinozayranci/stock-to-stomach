@@ -9,8 +9,8 @@ const corsHeaders = {
 
 // Price IDs for each tier
 const PRICE_IDS = {
-  standard: "price_1SutXnEWNXgtBSc6IDTKpksm", // £5 one-time
-  premium: "price_1SutZfEWNXgtBSc6hk1SZjtL",  // £12/month
+  standard: "price_1T0k6HEWNXgtBSc6uT65SM6v", // £5/month
+  premium: "price_1T0k8fEWNXgtBSc6A9lgAaDz",  // £12/month
 };
 
 const logStep = (step: string, details?: unknown) => {
@@ -59,10 +59,10 @@ serve(async (req) => {
     }
 
     const priceId = PRICE_IDS[tier as keyof typeof PRICE_IDS];
-    const origin = req.headers.get("origin") || "https://stock-to-stomach.lovable.app";
+    const origin = req.headers.get("origin") || "https://cookfromhere.com";
 
-    // Standard is one-time payment, Premium is subscription
-    const mode = tier === 'standard' ? 'payment' : 'subscription';
+    // Both are monthly subscriptions
+    const mode = 'subscription';
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
