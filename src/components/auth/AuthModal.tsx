@@ -85,20 +85,9 @@ export function AuthModal({ open, onOpenChange }: AuthModalProps) {
 
         const { error } = await signUp(email, password, displayName);
         if (error) throw error;
-        
-        // Send confirmation email via our custom edge function
-        try {
-          await supabase.functions.invoke('send-confirmation-email', {
-            body: { email, displayName }
-          });
-        } catch (emailError) {
-          console.error('Failed to send confirmation email:', emailError);
-          // Don't block signup if email fails - Supabase will send its own
-        }
-        
-        // Show confirmation message instead of closing modal
-        setMode('confirm-sent');
-        toast.success('Account created! Please check your email to confirm.');
+
+        toast.success('Account created! Welcome!');
+        onOpenChange(false);
       } else {
         const { error } = await signIn(email, password);
         if (error) throw error;

@@ -21,11 +21,6 @@ const Index = () => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
 
-  // Show email confirmation page for logged-in users who haven't confirmed their email
-  if (user && !isEmailConfirmed) {
-    return <EmailConfirmationPage />;
-  }
-
   // Show onboarding for new users who haven't completed it
   const shouldShowOnboarding = user && profile && !profile.has_completed_onboarding && !profileLoading;
   if (shouldShowOnboarding || showOnboarding) {
